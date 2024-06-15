@@ -1,0 +1,104 @@
+{% comment %} <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Welcome Page</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<style>
+/* Custom styles */
+body {
+    background-color: #f2f2f2;
+}
+</style>
+</head>
+<body>
+
+<div class="container text-center mt-5">
+    <h1 class="display-4">Welcome to Our Website</h1>
+    <p class="lead">We're glad to have you here!</p>
+    <a class="btn btn-primary" href="{% url 'enquiry_form' %}">Get Started</a>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html> {% endcomment %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courier Cost Comparison</title>
+    <style>
+        /* Basic styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+        .header {
+            background-image: url("../../media/courier_images/welcome1.jpg");
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            padding: 200px 0; /* Adjust the padding to position the text */
+        }
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+        .copyright {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        /* Responsive design */
+        @media screen and (max-width: 768px) {
+            .header {
+                padding: 80px 0; /* Adjust the padding for smaller screens */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        
+    </div>
+    <div class="container">
+        <h1>Welcome to Courier Cost Comparison</h1>
+        <p>Compare costs from different courier services and choose the best option for your needs.</p>
+        <a href="{% url 'enquiry_form' %}" class="button">Start Enquiry</a>
+    </div>
+    <div class="copyright">
+        <p>&copy; 2024 Courier Cost Comparison</p>
+    </div>
+</body>
+</html>

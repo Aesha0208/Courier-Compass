@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+    <title>Courier Details</title>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <style>
+        .custom-logo {
+            width: 65px;
+            height: 65px; 
+            max-width: 100px; 
+            max-height: 100px; 
+        }
+        .card_container{
+            overflow:auto;
+        }
+        .copyright {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        .header_bg{
+            background-image: url("../../media/courier_images/headerImg.jpeg");
+            background-size: cover;
+            background-position: center;
+            color: black;
+            padding: 100px 0; 
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <div class="jumbotron text-center header_bg">
+        <h1 class="display-5">Find your best courier services</h1>
+    </div>
+    <div class="container mt-4 card_container">
+        <div class="row">
+            {% if filterData %}
+                <div class="card mt-2" style="min-width: 100%;">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">This result has been based on given input's</h5>
+                    
+                    </div>
+                    <div class="row g-0">
+                        <div class="col ml-5 d-flex align-items-left justify-content-left">
+                            Source : {{filterData.source}}
+                        </div>
+                        <div class="col d-flex align-items-center justify-content-left">
+                            Destination : {{filterData.destination}}
+                        </div>
+                        <div class="col d-flex align-items-center justify-content-left">
+                            Service Type : {{filterData.srvType}}
+                        </div>
+                        
+                    </div>
+                    <div class="row g-0 mb-2">
+                        <div class="col ml-5 d-flex align-items-center justify-content-left">
+                            Courier Item : {{filterData.shipmentType}}
+                        </div>
+                        <div class="col d-flex align-items-center justify-content-left">
+                            Shipment Mode : {{filterData.transp}}
+                        </div>
+                        <div class="col d-flex align-items-center justify-content-left">
+                            Courier Weight: {{filterData.weight}}
+                        </div>
+                        
+                    </div>
+                </div>
+            
+            {% endif%}
+        </div>
+        <div class="row mb-2">
+            {% for res in data %}
+                <div class="card mt-2" style="min-width: 100%;">
+                    <div class="row g-0">
+                        <div class="col-md-4 d-flex align-items-center justify-content-center">
+                            <img src="{{ res.courier.image.url }}" class="card-img-top custom-logo" alt="{{ res.courier.name }}">
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card-body">
+                            <h5 class="card-title">{{ res.courier.name }}</h5>
+                            {% comment %} <p class="card-text">
+                                This is a wider card with supporting text below as a natural lead-in 
+                                to additional content. This content is a little bit longer.
+                            </p>
+                            <p class="card-text">
+                                <small class="text-muted">Last updated 3 mins ago</small>
+                            </p> {% endcomment %}
+                            </div>
+                        </div>
+                        <div class="col-md-2 d-flex align-items-center justify-content-center">
+                            Rs.<h3>{{ res.courier_cost }}</h3>
+                        </div>
+                    </div>
+                </div>
+            {% comment %} <div class="col">
+                <div class="card">
+                    <img src="{{ courier.image.url }}" class="card-img-top" alt="{{ courier.name }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ courier.name }}</h5>
+                        <p class="card-text">Source Area: {{ courier.serviceArea }}</p>
+                        <p class="card-text">Destination Area: {{ courier.serviceArea }}</p>
+                        <!-- You need to retrieve pricing information based on the courier -->
+                        {% for cost_table in courier.costtable_set.all %}
+                            {% if cost_table.serviceType == enquiry.serviceType and cost_table.shipmentType == enquiry.shipmentType and cost_table.travelBy == enquiry.travelBy %}
+                                <p class="card-text">Price: {{ cost_table.cityRate }}</p>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div> {% endcomment %}
+            {% endfor %}
+        </div>
+    </div>
+    <div class="copyright">
+        <p>&copy; 2024 Courier Cost Comparison</p>
+    </div>
+</body>
+</html>

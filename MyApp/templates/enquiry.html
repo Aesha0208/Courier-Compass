@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% load static %}
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Enquiry Form</title>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css"/>
+    <style>
+
+    body {
+        background-color: #f2f2f2;
+        padding-top: 20px;
+      }
+      .copyright {
+        background-color: #333;
+        color: #fff;
+        padding: 10px 0;
+        text-align: center;
+        position: relative;
+        bottom: 0;
+        width: 100%;
+      }
+      .header_bg {
+        background-image: url("../../media/courier_images/headerImg.jpeg");
+        background-size: cover;
+        background-position: center;
+        color: black;
+        padding: 70px 0;
+        background-color: rgba(0, 0, 0, 0.2);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="jumbotron header_bg">
+      <h1 class="display-5">Courier Service Enquiry Form</h1>
+      <p class="lead">Please fill out the form below to get best deal.</p>
+    </div>
+
+    <div class="container">
+      <form
+        action="{% url 'compareCourierPrice' %}"
+        method="POST"
+        class="overflow-auto"
+      >
+        {% csrf_token %} {{forms.as_table}}
+        <button type="submit" class="btn btn-primary form-control mt-2 md">
+          Submit
+        </button>
+      </form>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2024 Courier Cost Comparison</p>
+    </div>
+
+    <script src="{% static 'js/jquery.min.js'%}"></script>
+    <script src="{% static 'js/popper.min.js'%}"></script>
+    <script src="{% static 'js/bootstrap.min.js'%}"></script>
+    <script src="{% static 'js/select2.min.js'%}"></script>
+    <script>
+      $(document).ready(function () {
+        // Initialize Select2 for dropdowns
+        $(".select2").select2();
+      });
+    </script>
+  </body>
+</html>
